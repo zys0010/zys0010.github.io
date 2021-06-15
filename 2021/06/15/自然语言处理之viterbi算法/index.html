@@ -103,22 +103,22 @@
 <p>（3）接下来，类似地按照上述方法从第二个状态走到第三个状态，一直走到最后一个状态，就得到了整个网格从头到尾的最短路径。每一步计算的复杂度都和相邻两个状态Si和Si+1各自的节点数目ni，ni+1的乘积成正比，即O(ni·ni+1)</p>
 <p>（4）假设这个隐含马尔可夫链中节点最多的状态有D个节点，也就是说整个网格的宽度为D，那么任何一步的复杂度不超过O(D2)，由于网格长度是N，所以整个维特比算法的复杂度是O(N·D2)。</p>
 <p>如下图找到S到E中的一条最短路径</p>
-<p><img src="https://raw.githubusercontent.com/zys0010/zysblog/master/img/2.jpg" alt="2"></p>
+<p><img src="https://i.loli.net/2021/06/15/CeYFKoyXId57abM.jpg" alt="2"></p>
 <p>到A各个点的最短距离</p>
-<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\3.jpg" alt="3"></p>
+<p><img src="https://i.loli.net/2021/06/15/Adhs6Hy8qO5xBni.jpg" alt="3"></p>
 <p>到B的各个点的最短路径</p>
 <p>例如到B1的路径有三条</p>
 <p>A1——-&gt;&gt;B1</p>
 <p>A2——-&gt;&gt;B1</p>
 <p>A3——-&gt;&gt;B1</p>
 <p>计算d(Ai—–&gt;B1)，找到Min(d(Ai——&gt;B1))即为到B1的最短距离，如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/zys0010/zysblog/master/img/4.jpg" alt="4"></p>
+<p><img src="https://i.loli.net/2021/06/15/xiROv2qeBZouznX.jpg" alt="4"></p>
 <p>对于B2，B3同样使用该方法找到最短距离。将其合并在一个图中如下图所示：</p>
-<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\5.jpg" alt="5"></p>
+<p><img src="https://i.loli.net/2021/06/15/XJMK1danxEuGmV3.jpg" alt="5"></p>
 <p>到C的各个点的最短距离同样计算d(Bi—-&gt;Ci)，找到Min(d(Bi—–&gt;Ci))即为到C各个点的最短距离，如下所示：</p>
-<p><img src="https://raw.githubusercontent.com/zys0010/zysblog/master/img/6.jpg" alt="6"></p>
+<p><img src="https://i.loli.net/2021/06/15/sQRrG1wnOqIeC2k.jpg" alt="6"></p>
 <p>E点已经是终点了，我们稍微对比一下这三条路径的总长度就能知道哪条是最短路径了。</p>
-<p><img src="https://raw.githubusercontent.com/zys0010/zysblog/master/img/7.jpg" alt="7"></p>
+<p><img src="https://i.loli.net/2021/06/15/5TJyuvAEGQYiVCH.jpg" alt="7"></p>
 <p>以上就是viterbi算法的学习总结，该算法的优点在于在某一状态或者时刻只需要考虑有限个点的集合，如B1，B2，B3。能有效减少时间复杂度。</p>
 <p>以上学习来源知乎、博客。原文链接：</p>
 <p>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20136144">https://www.zhihu.com/question/20136144</a></p>
