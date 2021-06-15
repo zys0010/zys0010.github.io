@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>自然语言处理学习笔记 |  宇烁的技术专栏</title>
+      <title>自然语言处理之viterbi算法 |  宇烁的技术专栏</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -43,7 +43,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-自然语言处理学习笔记"
+  id="post-自然语言处理之viterbi算法"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -54,7 +54,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  自然语言处理学习笔记
+  自然语言处理之viterbi算法
 </h1>
  
 
@@ -62,15 +62,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/06/15/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2021-06-15T01:42:42.000Z" itemprop="datePublished">2021-06-15</time>
+      <a href="/2021/06/15/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E4%B9%8Bviterbi%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2021-06-15T03:46:12.000Z" itemprop="datePublished">2021-06-15</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">696</span>
+            <span class="post-count">695</span>
         </span>
     </span>
 
@@ -94,6 +94,8 @@
        
   <p>Viterbi算法总结</p>
 <p>（1）从点S出发，对于第一个状态X1的各个节点，不妨假定有n1个，计算出S到它们的距离d(S,X1i)，其中X1i代表任意状态1的节点。因为只有一步，所以这些距离都是S到它们各自的最短距离。</p>
+<span id="more"></span>
+
 <p>（2）对于第二个状态X2的所有节点，要计算出从S到它们的最短距离。对于特点的节点X2i，从S到它的路径可以经过状态1的n1中任何一个节点X1i，对应的路径长度就是d(S,X2i) = d(S,X1i) + d(X1i,X2i)。由于j有n1种可能性，我们要一一计算，找出最小值。即：</p>
 <p>d(S,X2i) = minI=1，n1 d(S,X1i) + d(X1i,X2i)</p>
 <p>这样对于第二个状态的每个节点，需要n1次乘法计算。假定这个状态有n2个节</p>
@@ -101,26 +103,26 @@
 <p>（3）接下来，类似地按照上述方法从第二个状态走到第三个状态，一直走到最后一个状态，就得到了整个网格从头到尾的最短路径。每一步计算的复杂度都和相邻两个状态Si和Si+1各自的节点数目ni，ni+1的乘积成正比，即O(ni·ni+1)</p>
 <p>（4）假设这个隐含马尔可夫链中节点最多的状态有D个节点，也就是说整个网格的宽度为D，那么任何一步的复杂度不超过O(D2)，由于网格长度是N，所以整个维特比算法的复杂度是O(N·D2)。</p>
 <p>如下图找到S到E中的一条最短路径</p>
-<p><img src="C:\Users\Administrator\Desktop\2.jpg" alt="2"></p>
+<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\2.jpg" alt="2"></p>
 <p>到A各个点的最短距离</p>
-<p><img src="C:\Users\Administrator\Desktop\3.jpg" alt="3"></p>
+<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\3.jpg" alt="3"></p>
 <p>到B的各个点的最短路径</p>
 <p>例如到B1的路径有三条</p>
 <p>A1——-&gt;&gt;B1</p>
 <p>A2——-&gt;&gt;B1</p>
 <p>A3——-&gt;&gt;B1</p>
 <p>计算d(Ai—–&gt;B1)，找到Min(d(Ai——&gt;B1))即为到B1的最短距离，如下图所示：</p>
-<p><img src="C:\Users\Administrator\Desktop\4.jpg" alt="4"></p>
+<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\4.jpg" alt="4"></p>
 <p>对于B2，B3同样使用该方法找到最短距离。将其合并在一个图中如下图所示：</p>
-<p><img src="C:\Users\Administrator\Desktop\5.jpg" alt="5"></p>
+<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\5.jpg" alt="5"></p>
 <p>到C的各个点的最短距离同样计算d(Bi—-&gt;Ci)，找到Min(d(Bi—–&gt;Ci))即为到C各个点的最短距离，如下所示：</p>
-<p><img src="C:\Users\Administrator\Desktop\6.jpg" alt="6"></p>
+<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\6.jpg" alt="6"></p>
 <p>E点已经是终点了，我们稍微对比一下这三条路径的总长度就能知道哪条是最短路径了。</p>
-<p><img src="C:\Users\Administrator\Desktop\7.jpg" alt="7"></p>
+<p><img src="/.com//Users\Administrator\blog\source_posts\自然语言处理之viterbi算法\7.jpg" alt="7"></p>
 <p>以上就是viterbi算法的学习总结，该算法的优点在于在某一状态或者时刻只需要考虑有限个点的集合，如B1，B2，B3。能有效减少时间复杂度。</p>
 <p>以上学习来源知乎、博客。原文链接：</p>
 <p>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20136144">https://www.zhihu.com/question/20136144</a></p>
-<p>博客园：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Denise-hzf/p/6612212.html">https://www.cnblogs.com/Denise-hzf/p/6612212.html</a></p>
+<p>博客园：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Denise-hzf/p/6">https://www.cnblogs.com/Denise-hzf/p/6</a></p>
  
       <!-- reward -->
       
@@ -191,7 +193,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/06/15/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/06/15/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E4%B9%8Bviterbi%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
